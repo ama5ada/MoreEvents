@@ -10,6 +10,7 @@ import com.hypixel.hytale.server.core.entity.InteractionContext;
 import com.hypixel.hytale.server.core.entity.InteractionManager;
 import com.hypixel.hytale.server.core.inventory.ItemStack;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHandler;
+import com.hypixel.hytale.server.core.modules.interaction.interaction.config.SimpleInteraction;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.server.RefillContainerInteraction;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
@@ -35,7 +36,7 @@ public class InterceptRefillContainer extends RefillContainerInteraction {
         getLogger().info("Intercepted RefillContainerInteraction and added RefillContainerEvent");
 
         if (event.isCancelled()) {
-            context.getState().state = InteractionState.Failed;
+            context.getState().state = InteractionState.Finished;
             InteractionManager manager = context.getInteractionManager();
             if (manager != null && context.getChain() != null) {
                 manager.cancelChains(context.getChain());
