@@ -3,10 +3,7 @@ package plugin;
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.Interaction;
 import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
-import plugin.intercepts.InterceptCycleBlockGroup;
-import plugin.intercepts.InterceptUseBlockInteractions;
-import plugin.intercepts.InterceptPlaceFluid;
-import plugin.intercepts.InterceptRefillContainer;
+import plugin.intercepts.*;
 
 import javax.annotation.Nonnull;
 
@@ -23,5 +20,6 @@ public class MoreEvents extends JavaPlugin {
         interactionRegistry.register("UseBlock", InterceptUseBlockInteractions.class, InterceptUseBlockInteractions.CODEC);
         interactionRegistry.register("RefillContainer", InterceptRefillContainer.class, InterceptRefillContainer.CODEC);
         interactionRegistry.register("CycleBlockGroup", InterceptCycleBlockGroup.class, InterceptCycleBlockGroup.CODEC);
+        interactionRegistry.register("ChangeBlock", InterceptChangeBlockInteraction.class, InterceptChangeBlockInteraction.CODEC);
     }
 }
