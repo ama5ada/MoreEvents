@@ -8,6 +8,8 @@ import com.hypixel.hytale.server.core.inventory.ItemStack;
 public enum InteractionEvent {
     HARVEST(HarvestBlockEvent::new),
     GATHER(GatherBlockEvent::new),
+    OPEN(OpenBlockEvent::new),
+    DOOR(DoorInteractionEvent::new),
     NONE(null);
 
     private final InteractionEventFactory factory;
@@ -21,9 +23,13 @@ public enum InteractionEvent {
         return factory == null ? null : factory.create(item, pos, block);
     }
 
-    public static InteractionEvent fromHint(String hint) {
+    public static InteractionEvent fromHint(String hint, BlockType block) {
         if (hint == null || hint.isEmpty()) {
             return NONE;
+        }
+
+        if (hint.equals("server.interactionHints.generic") && block != null && block.isDoor()) {
+            return DOOR;
         }
 
         String[] parts = hint.split("\\.");
@@ -42,7 +48,7 @@ public enum InteractionEvent {
             Vector3i pos,
             BlockType block) {
 
-        return fromHint(hint).createEvent(item, pos, block);
+        return fromHint(hint, block).createEvent(item, pos, block);
     }
 }
 

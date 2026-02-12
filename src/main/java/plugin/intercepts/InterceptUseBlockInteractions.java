@@ -31,7 +31,7 @@ public class InterceptUseBlockInteractions extends UseBlockInteraction {
     protected void interactWithBlock(@Nonnull World world, @Nonnull CommandBuffer<EntityStore> commandBuffer, @Nonnull InteractionType type, @Nonnull InteractionContext context, @Nullable ItemStack itemInHand, @Nonnull Vector3i targetBlock, @Nonnull CooldownHandler cooldownHandler) {
         BlockType targetBlockType = world.getBlockType(targetBlock);
 
-            if (targetBlockType != null) {
+        if (targetBlockType != null) {
             CancellableEcsEvent event = null;
             if (type.equals(InteractionType.Use)) {
                 event = InteractionEvent.createEventFromHint(targetBlockType.getInteractionHint(), itemInHand, targetBlock, targetBlockType);
