@@ -24,9 +24,9 @@ import javax.annotation.Nullable;
 
 import static com.hypixel.hytale.builtin.hytalegenerator.LoggerUtil.getLogger;
 
-public class InterceptUseBlockInteractions extends UseBlockInteraction {
+public class InterceptUseBlockInteraction extends UseBlockInteraction {
     @Nonnull
-    public static final BuilderCodec<InterceptUseBlockInteractions> CODEC;
+    public static final BuilderCodec<InterceptUseBlockInteraction> CODEC;
 
     protected void interactWithBlock(@Nonnull World world, @Nonnull CommandBuffer<EntityStore> commandBuffer, @Nonnull InteractionType type, @Nonnull InteractionContext context, @Nullable ItemStack itemInHand, @Nonnull Vector3i targetBlock, @Nonnull CooldownHandler cooldownHandler) {
         BlockType targetBlockType = world.getBlockType(targetBlock);
@@ -60,20 +60,10 @@ public class InterceptUseBlockInteractions extends UseBlockInteraction {
         super.interactWithBlock(world, commandBuffer, type, context, itemInHand,targetBlock, cooldownHandler);
     }
 
-    @Nonnull
-    protected Interaction generatePacket() {
-        return new com.hypixel.hytale.protocol.UseBlockInteraction();
-    }
-
-    @Nonnull
-    public String toString() {
-        return "UseBlockInteraction{} " + super.toString();
-    }
-
     static {
         CODEC = BuilderCodec.builder(
-                        InterceptUseBlockInteractions.class,
-                        InterceptUseBlockInteractions::new,
+                        InterceptUseBlockInteraction.class,
+                        InterceptUseBlockInteraction::new,
                         UseBlockInteraction.CODEC)
                 .documentation("Custom block use logic.")
                 .build();
