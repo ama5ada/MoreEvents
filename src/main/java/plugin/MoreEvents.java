@@ -17,9 +17,10 @@ public class MoreEvents extends JavaPlugin {
     protected void setup() {
         var interactionRegistry = getCodecRegistry(Interaction.CODEC);
         interactionRegistry.register("PlaceFluid", InterceptPlaceFluid.class, InterceptPlaceFluid.CODEC);
-        interactionRegistry.register("UseBlock", InterceptUseBlockInteractions.class, InterceptUseBlockInteractions.CODEC);
+        interactionRegistry.register("UseBlock", InterceptUseBlockInteraction.class, InterceptUseBlockInteraction.CODEC);
         interactionRegistry.register("RefillContainer", InterceptRefillContainer.class, InterceptRefillContainer.CODEC);
         interactionRegistry.register("CycleBlockGroup", InterceptCycleBlockGroup.class, InterceptCycleBlockGroup.CODEC);
         interactionRegistry.register("ChangeBlock", InterceptChangeBlockInteraction.class, InterceptChangeBlockInteraction.CODEC);
+        interactionRegistry.register("BreakBlock", InterceptBreakBlockInteraction.class, InterceptBreakBlockInteraction.CODEC);
     }
 }

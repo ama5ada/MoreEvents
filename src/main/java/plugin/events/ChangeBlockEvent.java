@@ -6,13 +6,13 @@ import com.hypixel.hytale.server.core.asset.type.blocktype.config.BlockType;
 
 import javax.annotation.Nonnull;
 
-public class ChangeBlockGroupEvent extends CancellableEcsEvent {
+public class ChangeBlockEvent extends CancellableEcsEvent {
     @Nonnull
     private Vector3i targetBlock;
     @Nonnull
     private final BlockType blockType;
 
-    public ChangeBlockGroupEvent(@Nonnull Vector3i targetBlock, BlockType blockType) {
+    public ChangeBlockEvent(@Nonnull Vector3i targetBlock, BlockType blockType) {
         this.targetBlock = targetBlock;
         this.blockType = blockType;
     }

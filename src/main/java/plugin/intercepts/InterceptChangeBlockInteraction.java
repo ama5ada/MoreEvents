@@ -13,7 +13,7 @@ import com.hypixel.hytale.server.core.modules.interaction.interaction.CooldownHa
 import com.hypixel.hytale.server.core.modules.interaction.interaction.config.client.ChangeBlockInteraction;
 import com.hypixel.hytale.server.core.universe.world.World;
 import com.hypixel.hytale.server.core.universe.world.storage.EntityStore;
-import plugin.events.ChangeBlockGroupEvent;
+import plugin.events.ChangeBlockEvent;
 
 import static com.hypixel.hytale.builtin.hytalegenerator.LoggerUtil.getLogger;
 
@@ -29,7 +29,7 @@ public class InterceptChangeBlockInteraction extends ChangeBlockInteraction {
             CooldownHandler cooldown
     ) {
         BlockType targetBlockType = world.getBlockType(blockPos);
-        ChangeBlockGroupEvent event = new ChangeBlockGroupEvent(blockPos, targetBlockType);
+        ChangeBlockEvent event = new ChangeBlockEvent(blockPos, targetBlockType);
         context.getEntity().getStore().invoke(context.getEntity(), event);
         getLogger().info("Intercepted ChangeBlockInteraction and added ChangeBlockEvent");
 
